@@ -1,0 +1,11 @@
+{
+  "name": "CBZ Compiler",
+  "short_name": "CBZ Compiler",
+  "description": "Merge, order and export comic pages and CBZ archives offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111316",
+  "theme_color": "#111316",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

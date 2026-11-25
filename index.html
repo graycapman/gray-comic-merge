@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CBZ Compiler</title>
+  <meta name="description" content="Merge, order and export comic pages and CBZ archives. Works offline in your browser.">
+  <meta name="theme-color" content="#111316">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="app" id="app" data-view="pages">
+    <header class="topbar" role="toolbar" aria-label="Main actions">
+      <h1 class="brand">CBZ Compiler</h1>
+      <div class="group">
+        <button class="btn primary" id="btn-add-files" type="button">Add files</button>
+        <button class="btn" id="btn-add-folder" type="button">Add folder</button>
+      </div>
+      <div class="group">
+        <button class="btn" id="btn-undo" type="button" disabled>Undo</button>
+        <button class="btn" id="btn-redo" type="button" disabled>Redo</button>
+      </div>
+      <div class="group">
+        <button class="btn" id="btn-sort" type="button">Sort…</button>
+        <button class="btn" id="btn-text-order" type="button">Order from list…</button>
+        <button class="btn" id="btn-rules" type="button">Rules…</button>
+      </div>
+      <span class="spacer"></span>
+      <button class="btn primary" id="btn-export" type="button">Export…</button>
+    </header>
+
+    <main class="workspace">
+      <section class="panel sources" aria-label="Sources">
+        <div class="panel-head"><h2>Sources</h2><span class="muted" id="source-count"></span></div>
+        <div class="panel-body" id="source-list"></div>
+        <div class="panel-foot">
+          <button class="btn small" id="btn-clear" type="button">Clear project</button>
+        </div>
+      </section>
+
+      <section class="panel pages" aria-label="Pages">
+        <div class="pages-toolbar" role="toolbar" aria-label="Page actions">
+          <span class="sel-info" id="sel-info" aria-live="polite"></span>
+          <span class="spacer"></span>
+          <button class="btn small" id="btn-up" type="button" title="Move up (Alt+↑)">Up</button>
+          <button class="btn small" id="btn-down" type="button" title="Move down (Alt+↓)">Down</button>
+          <button class="btn small" id="btn-top" type="button">Top</button>
+          <button class="btn small" id="btn-bottom" type="button">Bottom</button>
+          <select id="move-to-group" class="small" aria-label="Move selected pages to group"></select>
+          <button class="btn small" id="btn-group" type="button">Group…</button>
+          <button class="btn small" id="btn-split" type="button" title="Start a new group at the focused page">Split group</button>
+          <button class="btn small danger-text" id="btn-remove" type="button" title="Remove from project (Delete). Source files are never touched.">Remove</button>
+        </div>
+        <div class="list-wrap">
+          <div class="list" id="page-list"></div>
+          <div class="empty" id="empty-state" hidden>
+            <h2>Drop comic pages here</h2>
+            <p>Images, folders and CBZ files can be mixed. Nothing is uploaded; everything stays in your browser.</p>
+            <div class="group">
+              <button class="btn primary" id="empty-files" type="button">Add files</button>
+              <button class="btn" id="empty-folder" type="button">Add folder</button>
+            </div>
+          </div>
+        </div>
+        <p class="kbd-hint">Drag rows to reorder. Ctrl/⌘ and Shift select several pages. Alt+↑/↓ moves the selection.</p>
+      </section>
+
+      <section class="panel inspector" aria-label="Preview and issues">
+        <div class="tabs" role="tablist">
+          <button role="tab" id="tab-preview" aria-selected="true" aria-controls="pane-preview" type="button">Preview</button>
+          <button role="tab" id="tab-issues" aria-selected="false" aria-controls="pane-issues" type="button">Issues <span class="count" id="issue-count"></span></button>
+        </div>
+        <div class="panel-body" id="pane-preview" role="tabpanel" aria-labelledby="tab-preview"></div>
+        <div class="panel-body" id="pane-issues" role="tabpanel" aria-labelledby="tab-issues" hidden></div>
+      </section>
+    </main>
+
+    <nav class="bottom-tabs" aria-label="Sections">
+      <button type="button" data-view="sources">Sources</button>
+      <button type="button" data-view="pages" aria-current="true">Pages</button>
+      <button type="button" data-view="inspector">Preview</button>
+    </nav>
+  </div>
+
+  <div class="drop-overlay" id="drop-overlay" hidden><div>Drop to add pages</div></div>
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+
+  <input type="file" id="input-files" hidden multiple accept=".cbz,.zip,image/*,.jxl,.avif,.webp,.tif,.tiff">
+  <input type="file" id="input-folder" hidden webkitdirectory multiple>
+
+  <noscript>CBZ Compiler needs JavaScript.</noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

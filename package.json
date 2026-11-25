@@ -1,0 +1,1 @@
+{ "type": "module", "private": true, "name": "cbz-compiler", "scripts": { "test": "node --test tests/core.test.mjs" } }
