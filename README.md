@@ -3,7 +3,7 @@
 Merge, order and export comic pages and CBZ archives. Runs entirely in the browser, offline, with no server, account or network requests. Pages are never uploaded; your original files are only read.
 
 ## Use it
-
+[![Try it in your browser](https://img.shields.io/badge/Try%20it%20in%20your%20browser-46c2ae?style=for-the-badge)](https://graycapman.github.io/gray-comic-merge/)
 Open the published site (or serve this folder: `python3 -m http.server`, then open `http://localhost:8000`). ES modules need http(s); opening `index.html` from disk will not work.
 
 1. **Add** images, folders or `.cbz`/`.zip` files (button, or drag and drop). Mixed sources are fine.
