@@ -1,3 +1,4 @@
+![CBZ Compiler](banner.png)
 # CBZ Compiler
 
 Merge, order and export comic pages and CBZ archives. Runs entirely in the browser, offline, with no server, account or network requests. Pages are never uploaded; your original files are only read.
